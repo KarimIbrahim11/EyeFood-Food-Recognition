@@ -14,7 +14,7 @@ from matplotlib import pyplot as plt
 
 # Predicted values
 food_list = []
-fileReader = open('food-101/meta/labels.txt', 'r')
+fileReader = open('../food-101/meta/labels.txt', 'r')
 for line in fileReader.readlines():
     food_list.append(line.rstrip())
 fileReader.close()
@@ -59,6 +59,7 @@ predictions = Dense(n_classes,
                     kernel_regularizer=regularizers.l2(0.005),
                     activation='softmax')(x)
 model = Model(inputs=base_model.input, outputs=predictions)
+model.summary()
 model_best = load_model("weights-improvement-41-0.82.hdf5", compile=False)
 
 images = []
