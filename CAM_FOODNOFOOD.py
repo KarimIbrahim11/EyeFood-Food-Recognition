@@ -30,8 +30,9 @@ model = load_model('foodnofoodCNN2.h5')
 model_maps = Model(inputs=model.input, outputs=model.layers[-3].input)
 
 # Load a test image
+img_path = 'twodishes.jpg'
 # im = io.imread('../datasets/Food-5K/evaluation/1_416.jpg')
-im = io.imread('./data/additional-images/2.jpg')
+im = io.imread(img_path)
 plt.imshow(im)
 
 # Get the maps

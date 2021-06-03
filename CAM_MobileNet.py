@@ -60,9 +60,8 @@ K.clear_session()
 
 base_model = MobileNetV2(weights='imagenet', include_top=False)
 model_name = 'MobileNetV2'
-# epoch_num = 70
 
-"""### Add new top layers to the selected model"""
+# """### Add new top layers to the selected model"""
 
 n_classes = 101
 
@@ -144,19 +143,23 @@ print(heatmap.min(), heatmap.max(), heatmap.mean())
 plt.matshow(heatmap)
 
 # overlay 
-img = cv2.imread(img_path)
-heatmap = cv2.resize(heatmap, (img.shape[1], img.shape[0]))
+# img = cv2.imread(img_path)
+img = image.load_img(img_path)
+# heatmap = cv2.resize(heatmap, (img.shape[1], img.shape[0]))
+heatmap = cv2.resize(heatmap, (np.array(img).shape[1], np.array(img).shape[0]))
 heatmap = np.uint8(255 * heatmap)
-heatmap = cv2.applyColorMap(heatmap, cv2.COLORMAP_JET)
+heatmap = cv2.applyColorMap(heatmap, cv2.COLORMAP_RAINBOW)
+#heatmap = cv2.applyColorMap(heatmap, cv2.COLORMAP_JET)
 print(heatmap.min(), heatmap.max(), heatmap.mean())
 plt.imshow(heatmap)
 plt.axis('off')
 plt.title('heatmap')
 plt.show()
-# cv2.imshow('heatmap', heatmap)
 
-superimposed_img = heatmap * 1 + img
-# cv2.imshow('heatmap', superimposed_img)
+img = image.load_img(img_path)
+plt.imshow(img)
+plt.show()
+superimposed_img = heatmap * 400 + img
 plt.imshow(superimposed_img)
 plt.axis('off')
 plt.title('superimposed heatmap')
