@@ -44,7 +44,6 @@ K.clear_session()
 
 base_model = MobileNetV2(weights='imagenet', include_top=False)
 model_name = 'MobileNetV2'
-# epoch_num = 70
 
 """### Add new top layers to the selected model"""
 
