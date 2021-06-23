@@ -1,0 +1,8 @@
+
+__pycache__/pipeline.cpython-38.pyc
+*.hdf5
+*.h5
+*.pyc
+*.pyc
+__pycache__/detection_utils.cpython-38.pyc
+*.pth
