@@ -31,7 +31,7 @@ model.eval()  # put the model in evaluation mode
 
 ## LOAD IMAGE
 images_count=0
-for path in glob.glob("D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Foul/*.jpg"):
+for path in glob.glob("D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Ful Final/*.jpg"):
     # path = 'D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Foul/*.jpg'
     img = cv2.imread(path)
     ##
@@ -58,7 +58,7 @@ for path in glob.glob("D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Fo
 
     ## Show Cropped Images
     # plot_img_bbox(img, nms_prediction)
-    f = plt.figure()
+    #f = plt.figure()
     c = 0
 
     # Class Labels
@@ -82,7 +82,7 @@ for path in glob.glob("D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Fo
 
     for l in range(len(images)):
         print("Ana hena")
-        cv2.imwrite('D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Foul/boundingboxes/FulMedames_' + str(images_count) +'_'+str(l)+ '.jpg',
+        cv2.imwrite('D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Ful Final/boundingboxes/FulMedames_' + str(images_count) +'_'+str(l)+ '.jpg',
                     cv2.cvtColor(images[l], cv2.COLOR_BGR2RGB))
     images_count=images_count+1
     # print(plates_positions, predicted_labels)

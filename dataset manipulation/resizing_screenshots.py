@@ -2,7 +2,7 @@ import os
 
 from PIL import Image
 
-path = 'D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Foul/Screenshots/'
+path = 'D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Foul/'
 newpath = 'D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Foul/Screenshots2/'
 
 
