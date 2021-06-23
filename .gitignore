@@ -6,3 +6,4 @@ __pycache__/pipeline.cpython-38.pyc
 *.pyc
 __pycache__/detection_utils.cpython-38.pyc
 *.pth
+__pycache__/detection_utils.cpython-38.pyc
