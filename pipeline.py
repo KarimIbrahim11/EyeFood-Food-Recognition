@@ -3,19 +3,10 @@ from matplotlib import patches
 from tensorflow.keras.models import load_model
 import tensorflow as tf
 import tensorflow.keras.backend as K
-
-from master.classification_utils import *
 import torch
 import torchvision
 from torchvision import transforms
 from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
-from torch import nn
-import matplotlib.pyplot as plt
-import os
-import numpy as np
-import cv2
-from tqdm import tqdm
-import PIL.Image
 from master.detection_utils import *
 from master.classification_utils import *
 
@@ -55,7 +46,7 @@ image = transform(image)
 with torch.no_grad():
     prediction = model([image.to(device)])[0]
 
-print('MODEL OUTPUT\n')
+# print('MODEL OUTPUT\n')
 
 nms_prediction = apply_nms(prediction, iou_thresh=0.08)
 images, plates_positions = get_cropped_images(img, nms_prediction)
@@ -75,14 +66,13 @@ K.clear_session()
 
 model_best = load_model("weights-improvement-41-0.82.hdf5", compile=False)
 
-
 # for i in images:
 #     f.add_subplot(1, len(images), c + 1)
 #     c += 1
 #     plt.imshow(i)
 #     plt.show()
 
-with tf.device('/device:GPU:0'):
+with tf.device('/device:CPU:0'):
     predicted_labels = predict_class(model_best, images, food_list, True)
 
 print(plates_positions, predicted_labels)
