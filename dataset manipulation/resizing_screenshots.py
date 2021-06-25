@@ -2,12 +2,12 @@ import os
 
 from PIL import Image
 
-path = 'D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Foul/'
-newpath = 'D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Foul/Screenshots2/'
+path = 'D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Koshary/koshari_t/'
+newpath = 'D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Koshary/'
 
 
 def resize():
-    c = "Foul"
+    c = "Mahshi"
     i = 1
     for item in os.listdir(path):
         if os.path.isfile(path + item):

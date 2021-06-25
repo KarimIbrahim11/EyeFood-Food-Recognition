@@ -29,7 +29,7 @@ model.eval()  # put the model in evaluation mode
 
 ## LOAD IMAGE
 
-path = "D:/College/Semester 9/GP/Codes/master/images/joe.jpeg"
+path = "D:/College/Semester 9/GP/Codes/master/images/tifa.jpeg"
 img = cv2.imread(path)
 ##
 

@@ -31,7 +31,7 @@ model.eval()  # put the model in evaluation mode
 
 ## LOAD IMAGE
 images_count=0
-for path in glob.glob("D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Ful Final/*.jpg"):
+for path in glob.glob("D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Mahshi_V4/*.jpg"):
     # path = 'D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Foul/*.jpg'
     img = cv2.imread(path)
     ##
@@ -61,15 +61,15 @@ for path in glob.glob("D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Fu
     #f = plt.figure()
     c = 0
 
-    # Class Labels
-    fileReader = open('D:/College/Semester 9/GP/Codes/Datasets/food-101/meta/labels.txt', 'r')
-    food_list = [line.rstrip() for line in fileReader.readlines()]
-    fileReader.close()
-
-    K.clear_session()
-
-    model_best = load_model(
-        "D:/College/Semester 9/GP/Codes/master/classification weights/weights-improvement-41-0.82.hdf5", compile=False)
+    # # Class Labels
+    # fileReader = open('D:/College/Semester 9/GP/Codes/Datasets/food-101/meta/labels.txt', 'r')
+    # food_list = [line.rstrip() for line in fileReader.readlines()]
+    # fileReader.close()
+    #
+    # K.clear_session()
+    #
+    # model_best = load_model(
+    #     "D:/College/Semester 9/GP/Codes/master/classification weights/weights-improvement-41-0.82.hdf5", compile=False)
 
     # for i in images:
     #     f.add_subplot(1, len(images), c + 1)
@@ -82,7 +82,7 @@ for path in glob.glob("D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Fu
 
     for l in range(len(images)):
         print("Ana hena")
-        cv2.imwrite('D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Ful Final/boundingboxes/FulMedames_' + str(images_count) +'_'+str(l)+ '.jpg',
+        cv2.imwrite('D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/Mahshi_V4/Mahshi_final/Mahshi_' + str(images_count) +'_'+str(l)+ '.jpg',
                     cv2.cvtColor(images[l], cv2.COLOR_BGR2RGB))
     images_count=images_count+1
     # print(plates_positions, predicted_labels)

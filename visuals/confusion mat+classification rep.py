@@ -68,8 +68,8 @@ def main():
     print("({}) model loaded.".format(model_name))
 
     img_width, img_height = 299, 299
-    train_data_dir = 'food-101/train/'
-    validation_data_dir = 'food-101/test/'
+    train_data_dir = 'D:/College/Semester 9/GP/Codes/Datasets/food-101/train/'
+    validation_data_dir = 'D:/College/Semester 9/GP/Codes/Datasets/food-101/test/'
     batch_size = 32  # 64
 
     train_datagen = ImageDataGenerator(
@@ -101,7 +101,7 @@ def main():
     #### Compile the model with SGD optimazer, and use top 1 and top 5 accuracy metrics. Initialize two callbacks, one for checkpoints and one for the training logs
     """
 
-    model.load_weights("weights-improvement-41-0.82.hdf5")
+    model.load_weights("D:/College/Semester 9/GP/Codes/master/classification weights/weights-improvement-41-0.82.hdf5")
     print("Model weights loaded.")
     model.compile(optimizer=SGD(lr=0.0001, momentum=0.9),
                   loss='categorical_crossentropy',
@@ -115,7 +115,7 @@ def main():
     # Predicted values
     # !head food-101/meta/train.txt
     str_labels = []
-    fileReader = open('food-101/meta/labels.txt', 'r')
+    fileReader = open('D:/College/Semester 9/GP/Codes/Datasets/food-101/meta/labels.txt', 'r')
     for line in fileReader.readlines():
         str_labels.append(line.rstrip())
     fileReader.close()
@@ -129,6 +129,14 @@ def main():
     recall = recall_score(y_true, y_pred, labels=range(len(str_labels)), average='macro')
 
     cm = metrics.confusion_matrix(y_true, y_pred, labels=range(len(str_labels)), normalize='true')
+    print(cm)
+    # Write confusion matrix in a file
+    mat = np.matrix(cm)
+    with open('confusion_matrix.txt', 'wb') as f:
+        for line in mat:
+            np.savetxt(f, line, fmt='%.2f')
+    # np.savetxt('confusion_matrix.txt', cm, fmt='%.2f')
+    # print(confusion_matrix)
     print("Confusion Matrix Shape:", cm.shape)
     display_confusion_matrix(cm, score, precision, recall, str_labels)
 
