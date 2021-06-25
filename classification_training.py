@@ -10,9 +10,13 @@ from tensorflow.keras.layers import Convolution2D, MaxPooling2D, ZeroPadding2D, 
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import ModelCheckpoint, CSVLogger
 from tensorflow.keras.optimizers import SGD
+import os
 from tensorflow.keras.regularizers import l2
 from tensorflow import keras
 import numpy as np
+
+os.environ['TF_XLA_FLAGS'] = '--tf_xla_enable_xla_devices'
+dataset_path = "D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset"
 
 
 def main():
@@ -61,7 +65,7 @@ def main():
     elif use_the_model == 7:
         base_model = MobileNetV2(weights='imagenet', include_top=False)
         model_name = 'MobileNetV2'
-        epoch_num = 70
+        epoch_num = 35
         # epoch_num = 10
 
     elif use_the_model == 8:
@@ -69,17 +73,17 @@ def main():
         model_name = 'DenseNet121'
         epoch_num = 50
 
-    elif use_the_model == 9:
-        base_model = PureFoodNet.getModel(input_shape=train_generator.image_shape)
-        model_name = 'PureFoodNet'
-        epoch_num = 300
+    # elif use_the_model == 9:
+    #     base_model = PureFoodNet.getModel(input_shape=train_generator.image_shape)
+    #     model_name = 'PureFoodNet'
+    #     epoch_num = 300
 
     print("({}) {} model loaded with {} epochs.".format(model_name, use_the_model, epoch_num))
-
+    # D:\College\Semester 9\GP\Codes\master\classification weights\54_weights
     img_width, img_height = 299, 299
-    train_data_dir = 'food-101/train/'
-    validation_data_dir = 'food-101/test/'
-    batch_size = 32  # 64
+    train_data_dir = dataset_path + '/train/'
+    validation_data_dir = dataset_path + '/test/'
+    batch_size =  32  # 64
 
     train_datagen = ImageDataGenerator(
         rescale=1. / 255,
@@ -112,7 +116,7 @@ def main():
     # train_data_dir = 'food-101/train/'
     # validation_data_dir = 'food-101/test/'
     # batch_size = 32
-    n_classes = 101
+    n_classes = 54
 
     x = base_model.output
     x = GlobalAveragePooling2D()(x)
@@ -134,7 +138,7 @@ def main():
     """### Compile the model
     #### Compile the model with SGD optimazer, and use top 1 and top 5 accuracy metrics. Initialize two callbacks, one for checkpoints and one for the training logs
     """
-    model.load_weights("weights-improvement-41-0.82.hdf5")
+    # model.load_weights("weights-improvement-41-0.82.hdf5")
 
     model.compile(optimizer=SGD(lr=0.0001, momentum=0.9),
                   loss='categorical_crossentropy',
@@ -142,7 +146,8 @@ def main():
 
     """### Saving Training Progress"""
 
-    filepath = "weights-improvement-{epoch:02d}-{val_accuracy:.2f}.hdf5"
+    filepath = "D:/College/Semester 9/GP/Codes/master/classification weights/54_weights/weights-improvement-{" \
+               "epoch:02d}-{val_accuracy:.2f}.hdf5"
     checkpoint = ModelCheckpoint(filepath, monitor='val_accuracy', verbose=1, save_best_only=True, save_mode='max')
     callbacks_list = [checkpoint]
 
@@ -165,7 +170,7 @@ def main():
     # Predicted values
     # !head food-101/meta/train.txt
     str_labels = []
-    fileReader = open('food-101/meta/labels.txt', 'r')
+    fileReader = open(dataset_path + '/meta/labels.txt', 'r')
     for line in fileReader.readlines():
         str_labels.append(line.rstrip())
     fileReader.close()
