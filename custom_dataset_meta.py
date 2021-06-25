@@ -36,9 +36,3 @@ for directory in listdir(dataset_path + "/images"):
         count = count + 1
 train.close()
 test.close()
-# print(f.read())
-# onlydirs = [d for d in listdir(dirpath)]
-# mypath = "D:/College/Semester 9/GP/Codes/Datasets/food-101/images/apple_pie"
-#
-# onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f))]
-# print(onlydirs)
