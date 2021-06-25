@@ -23,12 +23,14 @@ def prepare_data(filepath, src, dest):
 
 # Prepare train dataset by copying images from food-101/images to food-101/train using the file train.txt
 
+dataset_path = "D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset"
+
 print("Creating train data...")
-prepare_data('food-101/meta/train.txt', 'food-101/images', 'food-101/train')
+prepare_data(dataset_path+'/meta/train.txt', dataset_path+'/images', dataset_path+'/train')
 print("Success")
 
 # Prepare test data by copying images from food-101/images to food-101/test using the file test.txt
 
 print("Creating test data...")
-prepare_data('food-101/meta/test.txt', 'food-101/images', 'food-101/test')
+prepare_data(dataset_path+'/meta/test.txt', dataset_path+'/images', dataset_path+'/test')
 print("Success..")
