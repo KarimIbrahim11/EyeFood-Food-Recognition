@@ -22,7 +22,7 @@ for directory in listdir(dataset_path + "/images"):
     f.write(str(directory.capitalize().replace("_", " ")) + "\n")
 f.close()
 
-# Create train.txt
+# Create train.txt [0.75 of the class] and test.xt [0.25 of the class]
 train = open(metapath + '/train.txt', 'w')
 test = open(metapath + '/test.txt', 'w')
 
