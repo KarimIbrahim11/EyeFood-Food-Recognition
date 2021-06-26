@@ -1,7 +1,7 @@
 # Food-Recognition for Visually Impaired [THESIS]
 
 Project Files Structure:<br/>
-`\_Datasests`<br/>
+`\_Datasets`<br/>
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;`\_Custom Dataset`<br/>
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;`\_food-101`<br/>`
 \_master [REPO]`<br/>
