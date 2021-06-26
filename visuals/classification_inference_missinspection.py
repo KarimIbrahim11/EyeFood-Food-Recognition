@@ -20,10 +20,12 @@ from matplotlib import pyplot as plt
 from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
 
 import matplotlib.image as mpimg
+import os
 
-
+os.environ['TF_XLA_FLAGS'] = '--tf_xla_enable_xla_devices'
+dataset_path = "D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset"
 def show_img(path, label):
-    path = 'D:\\College\\Semester 9\\GP\\Codes\\food-101\\images\\' + path
+    path = 'D:\\College\\Semester 9\\GP\\Codes\\Datasets\\Custom Dataset\\images\\' + path
     img = mpimg.imread(path)
     plt.imshow(img)
     plt.axis('off')
@@ -42,7 +44,7 @@ def main():
 
     """### Add new top layers to the selected model"""
 
-    n_classes = 101
+    n_classes = 54
 
     x = base_model.output
     x = GlobalAveragePooling2D()(x)
@@ -60,8 +62,8 @@ def main():
     print("({}) model loaded.".format(model_name))
 
     img_width, img_height = 299, 299
-    train_data_dir = 'food-101/train/'
-    validation_data_dir = 'food-101/test/'
+    train_data_dir = dataset_path + '/train/'
+    validation_data_dir = dataset_path + '/test/'
     batch_size = 32  # 64
 
     train_datagen = ImageDataGenerator(
@@ -93,7 +95,8 @@ def main():
     #### Compile the model with SGD optimazer, and use top 1 and top 5 accuracy metrics. Initialize two callbacks, one for checkpoints and one for the training logs
     """
 
-    model.load_weights("weights-improvement-41-0.82.hdf5")
+    model.load_weights("D:/College/Semester 9/GP/Codes/master/classification "
+                       "weights/54_weights/weights_2/weights-improvement-13-0.85.hdf5")
     print("Model weights loaded.")
     model.compile(optimizer=SGD(lr=0.0001, momentum=0.9),
                   loss='categorical_crossentropy',
@@ -101,7 +104,7 @@ def main():
 
     # Predicted values
     str_labels = []
-    fileReader = open('food-101/meta/labels.txt', 'r')
+    fileReader = open('D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/meta/labels.txt', 'r')
     for line in fileReader.readlines():
         str_labels.append(line.rstrip())
     fileReader.close()

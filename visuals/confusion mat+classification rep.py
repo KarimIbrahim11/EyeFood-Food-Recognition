@@ -10,6 +10,7 @@ from tensorflow.keras.layers import Convolution2D, MaxPooling2D, ZeroPadding2D, 
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import ModelCheckpoint, CSVLogger
 from tensorflow.keras.optimizers import SGD
+import os
 from tensorflow.keras.regularizers import l2
 from tensorflow import keras
 import numpy as np
@@ -17,6 +18,9 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
+
+os.environ['TF_XLA_FLAGS'] = '--tf_xla_enable_xla_devices'
+dataset_path = "D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset"
 
 
 def display_confusion_matrix(cmat, score, precision, recall, str_labels):
@@ -50,7 +54,7 @@ def main():
 
     """### Add new top layers to the selected model"""
 
-    n_classes = 101
+    n_classes = 54
 
     x = base_model.output
     x = GlobalAveragePooling2D()(x)
@@ -68,8 +72,8 @@ def main():
     print("({}) model loaded.".format(model_name))
 
     img_width, img_height = 299, 299
-    train_data_dir = 'D:/College/Semester 9/GP/Codes/Datasets/food-101/train/'
-    validation_data_dir = 'D:/College/Semester 9/GP/Codes/Datasets/food-101/test/'
+    train_data_dir = dataset_path + '/train/'
+    validation_data_dir = dataset_path + '/test/'
     batch_size = 32  # 64
 
     train_datagen = ImageDataGenerator(
@@ -101,7 +105,8 @@ def main():
     #### Compile the model with SGD optimazer, and use top 1 and top 5 accuracy metrics. Initialize two callbacks, one for checkpoints and one for the training logs
     """
 
-    model.load_weights("D:/College/Semester 9/GP/Codes/master/classification weights/weights-improvement-41-0.82.hdf5")
+    model.load_weights("D:/College/Semester 9/GP/Codes/master/classification "
+                       "weights/54_weights/weights_2/weights-improvement-13-0.85.hdf5")
     print("Model weights loaded.")
     model.compile(optimizer=SGD(lr=0.0001, momentum=0.9),
                   loss='categorical_crossentropy',
@@ -115,7 +120,7 @@ def main():
     # Predicted values
     # !head food-101/meta/train.txt
     str_labels = []
-    fileReader = open('D:/College/Semester 9/GP/Codes/Datasets/food-101/meta/labels.txt', 'r')
+    fileReader = open('D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/meta/labels.txt', 'r')
     for line in fileReader.readlines():
         str_labels.append(line.rstrip())
     fileReader.close()
@@ -132,7 +137,7 @@ def main():
     print(cm)
     # Write confusion matrix in a file
     mat = np.matrix(cm)
-    with open('confusion_matrix.txt', 'wb') as f:
+    with open('confusion_matrix_54.txt', 'wb') as f:
         for line in mat:
             np.savetxt(f, line, fmt='%.2f')
     # np.savetxt('confusion_matrix.txt', cm, fmt='%.2f')

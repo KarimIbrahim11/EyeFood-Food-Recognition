@@ -29,7 +29,7 @@ model.eval()  # put the model in evaluation mode
 
 ## LOAD IMAGE
 
-path = "D:/College/Semester 9/GP/Codes/master/images/fulmedames2.jpg"
+path = "D:/College/Semester 9/GP/Codes/master/images/elbrens4.jpg"
 img = cv2.imread(path)
 ##
 
@@ -68,7 +68,8 @@ K.clear_session()
 # model_best = load_model("D:/College/Semester 9/GP/Codes/master/classification weights/weights-improvement-41-0.82.hdf5",
 #                         compile=False)
 model_best = load_model(
-    "D:/College/Semester 9/GP/Codes/master/classification weights/54_weights/weights-improvement-34-0.84.hdf5",
+    "D:/College/Semester 9/GP/Codes/master/classification weights/54_weights/weights_2/weights-improvement-13-0.85.hdf5",
+    #"D:/College/Semester 9/GP/Codes/master/classification weights/54_weights/weights-improvement-34-0.84.hdf5",
     compile=False)
 # for i in images:
 #     f.add_subplot(1, len(images), c + 1)

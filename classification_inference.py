@@ -32,7 +32,7 @@ K.clear_session()
 # model_best = load_model("D:/College/Semester 9/GP/Codes/master/classification
 # weights/weights-improvement-41-0.82.hdf5", compile=False)
 model_best = load_model(
-    "D:/College/Semester 9/GP/Codes/master/classification weights/54_weights/weights-improvement-34-0.84.hdf5",
+    "D:/College/Semester 9/GP/Codes/master/classification weights/54_weights/weights_2/weights-improvement-13-0.85.hdf5",
     compile=False)
 
 # converter = tf.lite.TFLiteConverter.from_keras_model(model_best)
