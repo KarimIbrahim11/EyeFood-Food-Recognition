@@ -1,0 +1,48 @@
+
+1265/1265 [==============================] - 799s 632ms/step - loss: 0.7803 - accuracy: 0.8731 - top_k_categorical_accuracy: 0.9778 - val_loss: 0.9248 - val_accuracy: 0.8290 - val_top_k_categorical_accuracy: 0.9600
+
+Epoch 00024: val_accuracy improved from 0.82846 to 0.82898, saving model to D:/College/Semester 9/GP/Codes/master/classification weights/54_weights\weights-improvement-24-0.83.hdf5
+Epoch 25/35
+1265/1265 [==============================] - 798s 631ms/step - loss: 0.7651 - accuracy: 0.8746 - top_k_categorical_accuracy: 0.9774 - val_loss: 0.9113 - val_accuracy: 0.8312 - val_top_k_categorical_accuracy: 0.9608
+
+Epoch 00025: val_accuracy improved from 0.82898 to 0.83121, saving model to D:/College/Semester 9/GP/Codes/master/classification weights/54_weights\weights-improvement-25-0.83.hdf5
+Epoch 26/35
+1265/1265 [==============================] - 788s 623ms/step - loss: 0.7399 - accuracy: 0.8822 - top_k_categorical_accuracy: 0.9789 - val_loss: 0.8951 - val_accuracy: 0.8352 - val_top_k_categorical_accuracy: 0.9618
+
+Epoch 00026: val_accuracy improved from 0.83121 to 0.83521, saving model to D:/College/Semester 9/GP/Codes/master/classification weights/54_weights\weights-improvement-26-0.84.hdf5
+Epoch 27/35
+1265/1265 [==============================] - 790s 624ms/step - loss: 0.7317 - accuracy: 0.8820 - top_k_categorical_accuracy: 0.9793 - val_loss: 0.8997 - val_accuracy: 0.8330 - val_top_k_categorical_accuracy: 0.9607
+
+Epoch 00027: val_accuracy did not improve from 0.83521
+Epoch 28/35
+1265/1265 [==============================] - 789s 624ms/step - loss: 0.7148 - accuracy: 0.8858 - top_k_categorical_accuracy: 0.9799 - val_loss: 0.8925 - val_accuracy: 0.8317 - val_top_k_categorical_accuracy: 0.9611
+
+Epoch 00028: val_accuracy did not improve from 0.83521
+Epoch 29/35
+1265/1265 [==============================] - 795s 628ms/step - loss: 0.6936 - accuracy: 0.8903 - top_k_categorical_accuracy: 0.9814 - val_loss: 0.8729 - val_accuracy: 0.8347 - val_top_k_categorical_accuracy: 0.9615
+
+Epoch 00029: val_accuracy did not improve from 0.83521
+Epoch 30/35
+1265/1265 [==============================] - 794s 627ms/step - loss: 0.6785 - accuracy: 0.8913 - top_k_categorical_accuracy: 0.9824 - val_loss: 0.8631 - val_accuracy: 0.8384 - val_top_k_categorical_accuracy: 0.9623
+
+Epoch 00030: val_accuracy improved from 0.83521 to 0.83841, saving model to D:/College/Semester 9/GP/Codes/master/classification weights/54_weights\weights-improvement-30-0.84.hdf5
+Epoch 31/35
+1265/1265 [==============================] - 789s 623ms/step - loss: 0.6660 - accuracy: 0.8953 - top_k_categorical_accuracy: 0.9822 - val_loss: 0.8692 - val_accuracy: 0.8352 - val_top_k_categorical_accuracy: 0.9620
+
+Epoch 00031: val_accuracy did not improve from 0.83841
+Epoch 32/35
+1265/1265 [==============================] - 789s 624ms/step - loss: 0.6489 - accuracy: 0.8997 - top_k_categorical_accuracy: 0.9849 - val_loss: 0.8584 - val_accuracy: 0.8370 - val_top_k_categorical_accuracy: 0.9621
+
+Epoch 00032: val_accuracy did not improve from 0.83841
+Epoch 33/35
+1265/1265 [==============================] - 793s 626ms/step - loss: 0.6337 - accuracy: 0.9011 - top_k_categorical_accuracy: 0.9843 - val_loss: 0.8535 - val_accuracy: 0.8387 - val_top_k_categorical_accuracy: 0.9619
+
+Epoch 00033: val_accuracy improved from 0.83841 to 0.83870, saving model to D:/College/Semester 9/GP/Codes/master/classification weights/54_weights\weights-improvement-33-0.84.hdf5
+Epoch 34/35
+1265/1265 [==============================] - 792s 626ms/step - loss: 0.6237 - accuracy: 0.9023 - top_k_categorical_accuracy: 0.9850 - val_loss: 0.8390 - val_accuracy: 0.8425 - val_top_k_categorical_accuracy: 0.9636
+
+Epoch 00034: val_accuracy improved from 0.83870 to 0.84249, saving model to D:/College/Semester 9/GP/Codes/master/classification weights/54_weights\weights-improvement-34-0.84.hdf5
+Epoch 35/35
+1265/1265 [==============================] - 791s 625ms/step - loss: 0.6134 - accuracy: 0.9033 - top_k_categorical_accuracy: 0.9860 - val_loss: 0.8446 - val_accuracy: 0.8368 - val_top_k_categorical_accuracy: 0.9627
+
+Epoch 00035: val_accuracy did not improve from 0.84249

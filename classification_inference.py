@@ -22,24 +22,29 @@ from master.classification_utils import *
 
 
 # Class Labels
-fileReader = open('D:/College/Semester 9/GP/Codes/Datasets/food-101/meta/labels.txt', 'r')
+# fileReader = open('D:/College/Semester 9/GP/Codes/Datasets/food-101/meta/labels.txt', 'r')
+fileReader = open('D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/meta/labels.txt', 'r')
 food_list = [line.rstrip() for line in fileReader.readlines()]
 fileReader.close()
 
 K.clear_session()
 
-model_best = load_model("D:/College/Semester 9/GP/Codes/master/classification weights/weights-improvement-41-0.82.hdf5", compile=False)
+# model_best = load_model("D:/College/Semester 9/GP/Codes/master/classification
+# weights/weights-improvement-41-0.82.hdf5", compile=False)
+model_best = load_model(
+    "D:/College/Semester 9/GP/Codes/master/classification weights/54_weights/weights-improvement-34-0.84.hdf5",
+    compile=False)
 
-converter = tf.lite.TFLiteConverter.from_keras_model(model_best)
-tflite_model = converter.convert()
+# converter = tf.lite.TFLiteConverter.from_keras_model(model_best)
+# tflite_model = converter.convert()
+# with open('D:/College/Semester 9/GP/Codes/master/classification weights/plant-recognition-model.tflite', 'wb') as f:
+#    f.write(tflite_model)
 
-with open('D:/College/Semester 9/GP/Codes/master/classification weights/plant-recognition-model.tflite', 'wb') as f:
-   f.write(tflite_model)
 
-
-img_paths = ['sushii.jpg', 'tomato.jpeg', 'egg.jpeg', 'cucumber.jpeg']
+img_paths = ['sushii.jpg', 'tomato.jpeg', 'egg.jpeg', 'cucumber.jpeg', 'fulmedames3.jpg', 'omlette.jpg']
 images = []
-with tf.device('/device:GPU:0'):
+with tf.device('/device:CPU:0'):
     for img_path in img_paths:
-        images.append(cv2.cvtColor(cv2.imread("D:/College/Semester 9/GP/Codes/master/images/"+img_path), cv2.COLOR_BGR2RGB))
+        images.append(
+            cv2.cvtColor(cv2.imread("D:/College/Semester 9/GP/Codes/master/images/" + img_path), cv2.COLOR_BGR2RGB))
     pred_labels = predict_class(model_best, images, food_list, True)
