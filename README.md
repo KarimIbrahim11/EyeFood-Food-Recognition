@@ -1,5 +1,10 @@
-# Food-Recognition for Visually Impaired [THESIS]
-
+# EyeFood (Food-Recognition for Visually Impaired [THESIS])
+![alt text](https://github.com/KarimIbrahim11/Food-Recognition/blob/main/logo.png?raw=true "Title")
+<!--
+<div align="left">
+  <img src="https://github.com/KarimIbrahim11/Food-Recognition/blob/main/logo.png" width="550" title="EyeFood Logo">
+</div>
+-->
 Project Files Structure:<br/>
 `\_Datasets`<br/>
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;`\_Custom Dataset`<br/>
