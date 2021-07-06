@@ -15,8 +15,8 @@ import numpy as np
 import cv2
 from tqdm import tqdm
 import PIL.Image
-from detection_utils import *
-from classification_utils import *
+from master.detection_utils import *
+from master.classification_utils import *
 
 ## Detection MODEL
 model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
@@ -26,18 +26,24 @@ model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 model.to(device)
-path = '/home/amir/Downloads/fasterrcnn_uec12.pth'
+path = 'D:/College/Semester 9/GP/Codes/master/detection weights/fasterrcnn_uec26.pth'
 if torch.cuda.is_available():
     model.load_state_dict(torch.load(path))
 else:
     model.load_state_dict(torch.load(path, map_location=device))
+
+# # Use torch.jit.trace to generate a torch.jit.ScriptModule via tracing.
+# traced_script_module = torch.jit.trace(model)
+#
+# # Save the TorchScript model
+# traced_script_module.save("torchscript.pt")
 
 model.eval()  # put the model in evaluation mode
 ##
 
 ## LOAD IMAGE
 
-path = '/home/amir/Downloads/tifa.jpeg'
+path = 'tifa.jpeg'
 img = cv2.imread(path)
 ##
 
@@ -66,7 +72,7 @@ f = plt.figure()
 c = 0
 
 # Class Labels
-fileReader = open('new_labels.txt', 'r')
+fileReader = open('D:/College/Semester 9/GP/Codes/Datasets/Custom Dataset/meta/labels.txt', 'r')
 food_list = [line.rstrip() for line in fileReader.readlines()]
 fileReader.close()
 
@@ -75,9 +81,8 @@ K.clear_session()
 # model_best = load_model("weights-improvement-41-0.82.hdf5", compile=False)
 
 # Load the TFLite model and allocate tensors.
-interpreter = tf.lite.Interpreter(model_path="classy2.tflite")
+interpreter = tf.lite.Interpreter(model_path="D:/College/Semester 9/GP/Codes/master/classy2.tflite")
 interpreter.allocate_tensors()
-
 
 # for i in images:
 #     f.add_subplot(1, len(images), c + 1)
