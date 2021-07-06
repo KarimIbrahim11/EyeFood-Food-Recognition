@@ -4,7 +4,6 @@ from tensorflow.keras.models import load_model
 import tensorflow as tf
 import tensorflow.keras.backend as K
 
-from master.classification_utils import *
 import torch
 import torchvision
 from torchvision import transforms
@@ -16,8 +15,8 @@ import numpy as np
 import cv2
 from tqdm import tqdm
 import PIL.Image
-from master.detection_utils import *
-from master.classification_utils import *
+from detection_utils import *
+from classification_utils import *
 
 ## Detection MODEL
 model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
@@ -27,7 +26,7 @@ model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 model.to(device)
-path = '../detection weights/fasterrcnn_uec12.pth'
+path = '/home/amir/Downloads/fasterrcnn_uec12.pth'
 if torch.cuda.is_available():
     model.load_state_dict(torch.load(path))
 else:
@@ -38,7 +37,7 @@ model.eval()  # put the model in evaluation mode
 
 ## LOAD IMAGE
 
-path = 'twodishes.jpg'
+path = '/home/amir/Downloads/tifa.jpeg'
 img = cv2.imread(path)
 ##
 
@@ -67,13 +66,17 @@ f = plt.figure()
 c = 0
 
 # Class Labels
-fileReader = open('../food-101/meta/labels.txt', 'r')
+fileReader = open('new_labels.txt', 'r')
 food_list = [line.rstrip() for line in fileReader.readlines()]
 fileReader.close()
 
 K.clear_session()
 
-model_best = load_model("weights-improvement-41-0.82.hdf5", compile=False)
+# model_best = load_model("weights-improvement-41-0.82.hdf5", compile=False)
+
+# Load the TFLite model and allocate tensors.
+interpreter = tf.lite.Interpreter(model_path="classy2.tflite")
+interpreter.allocate_tensors()
 
 
 # for i in images:
@@ -82,8 +85,8 @@ model_best = load_model("weights-improvement-41-0.82.hdf5", compile=False)
 #     plt.imshow(i)
 #     plt.show()
 
-with tf.device('/device:GPU:0'):
-    predicted_labels = predict_class(model_best, images, food_list, True)
+with tf.device('/device:CPU:0'):
+    predicted_labels = predict_class(interpreter, images, food_list, True)
 
 print(plates_positions, predicted_labels)
 ##

@@ -1,7 +1,7 @@
-
 from matplotlib import patches
 import torchvision
 import matplotlib.pyplot as plt
+
 
 def apply_nms(orig_prediction, iou_thresh=0.3):
     # torchvision returns the indices of the bboxes to keep
@@ -83,5 +83,3 @@ def get_position(py, px, img_height, img_width):
     else:
         position = "near right"
     return position
-
-
