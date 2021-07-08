@@ -18,7 +18,7 @@ model.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 model.to(device)
-path = 'D:/College/Semester 9/GP/Codes/master/detection weights/fasterrcnn_uec17.pth'
+path = 'D:/College/Semester 9/GP/Codes/master/detection weights/fasterrcnn_uec26.pth'
 if torch.cuda.is_available():
     model.load_state_dict(torch.load(path))
 else:
@@ -29,7 +29,7 @@ model.eval()  # put the model in evaluation mode
 
 ## LOAD IMAGE
 
-path = "D:/College/Semester 9/GP/Codes/master/images/elbrens4.jpg"
+path = "D:/College/Semester 9/GP/Codes/master/images/fulmedames2.jpg"
 img = cv2.imread(path)
 ##
 
@@ -69,7 +69,7 @@ K.clear_session()
 #                         compile=False)
 model_best = load_model(
     "D:/College/Semester 9/GP/Codes/master/classification weights/54_weights/weights_2/weights-improvement-13-0.85.hdf5",
-    #"D:/College/Semester 9/GP/Codes/master/classification weights/54_weights/weights-improvement-34-0.84.hdf5",
+    # "D:/College/Semester 9/GP/Codes/master/classification weights/54_weights/weights-improvement-34-0.84.hdf5",
     compile=False)
 # for i in images:
 #     f.add_subplot(1, len(images), c + 1)
