@@ -1,0 +1,90 @@
+WindowManager:
+    CheckScreen:
+    CameraClickScreen:
+    ResultScreen:
+<CheckScreen>:
+    name : "main"
+    canvas.before:
+        Color :
+            rgba : 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    RelativeLayout:
+        size : root.width , root.height
+        Image:
+            source : 'final_logo.png'
+            size_hint : 0.8,0.7
+            pos_hint : {'center_x' : 0.5,'center_y': 0.7 }
+            allow_stretch : True
+            keep_ratio : True
+        Button:
+            text : "Choose a Photo"
+            size_hint:0.4,0.13
+            pos_hint : {'center_x': 0.5, 'center_y': 0.35}
+            on_release:
+                root.show_popup()
+        Button:
+            text : "Take a Photo"
+            size_hint:0.4,0.13
+            pos_hint : {'center_x': 0.5, 'center_y': 0.2}
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+<CameraClickScreen>:
+    name : "second"
+    canvas.before:
+        Color :
+            rgba : 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    RelativeLayout:
+        size : root.width , root.height
+        Camera:
+            id : camera
+            resolution : (800, 800)
+            play : True
+        Button:
+            text : " "
+            background_normal : "back.png"
+            background_down : "back.png"
+            size_hint:0.1,0.1
+            pos_hint : {'x': 0, 'top': 1}
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+        Button:
+            text : "Capture"
+            size_hint: 0.2,0.1
+            pos_hint : {'center_x': 0.5, 'y': 0}
+            on_release:
+                root.capture()
+<ResultScreen>:
+    name : "third"
+    canvas.before:
+        Color :
+            rgba : 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    RelativeLayout:
+        size : root.width , root.height
+        Carousel:
+            id : carousel
+            direction : "right"
+
+        Button:
+            text : " "
+            background_normal : "back.png"
+            background_down : "back.png"
+            size_hint:0.1,0.1
+            pos_hint : {'x': 0, 'top': 1}
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+        #Label:
+         #   text : "Detection & Classification Results"
+          #  pos_hint : {'x': 0.3 , 'top' : 1}
+
+
