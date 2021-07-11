@@ -1,6 +1,6 @@
 from PIL.Image import Image
 import os
-from general_utils import *
+from master.server.general_utils import *
 from flask import Flask, request, jsonify, send_file
 
 fileReader = open('labels.txt', 'r')

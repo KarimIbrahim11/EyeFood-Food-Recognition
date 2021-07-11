@@ -13,7 +13,7 @@ from kivy.uix.image import Image
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
 from kivy.uix.screenmanager import ScreenManager, Screen
-from model.general_utils import *
+from master.kivy.model.general_utils import *
 
 from kivy.utils import platform
 

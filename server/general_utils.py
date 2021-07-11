@@ -14,8 +14,8 @@ import numpy as np
 import cv2
 from tqdm import tqdm
 import PIL.Image
-from detection_utils import *
-from classification_utils import *
+from master.server.detection_utils import *
+from master.server.classification_utils import *
 
 
 ## Detection MODEL
@@ -28,7 +28,7 @@ def detection_model():
     # device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
     device = torch.device('cpu')
     model.to(device)
-    path = 'fasterrcnn_uec26.pth'
+    path = 'D:/College/Semester 9/GP/Codes/master/detection weights/fasterrcnn_uec26.pth'
     # if torch.cuda.is_available():
     #     model.load_state_dict(torch.load(path))
     # else:
@@ -69,7 +69,8 @@ def detect(model, img):
 
 def classification_model():
     K.clear_session()
-    model_best = load_model("weights-improvement-13-0.85.hdf5", compile=False)
+    model_best = load_model("D:/College/Semester 9/GP/Codes/master/classification "
+                            "weights/54_weights/weights_2/weights-improvement-13-0.85.hdf5", compile=False)
     return model_best
 
 
